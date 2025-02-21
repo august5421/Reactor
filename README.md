@@ -22,8 +22,8 @@ Backend: Node.js, Express
 Database: Firebase, Supabase, MongoDB (configurable during initialization)
 Authentication: Firebase Authentication, OAuth (Google, GitHub), Email/Password
 CMS: Custom Admin Panel
-Ideal Use Cases:
 
+Ideal Use Cases:
 Full-stack web applications that require rapid setup with a functional authentication system and a CMS backend.
 Projects that need flexibility in choosing between different database providers without additional setup complexity.
 Developers looking for a boilerplate that integrates modern tools and best practices, allowing them to focus on building core features.
