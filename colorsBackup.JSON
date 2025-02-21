@@ -1,0 +1,303 @@
+[
+    {
+        "key": "notFoundPage",
+        "value": [
+            {
+                "value": "#ba0000",
+                "key": "headingColor"
+            },
+            {
+                "key": "bodyColor",
+                "value": "#161b21"
+            }
+        ]
+    },
+    {
+        "key": "site",
+        "value": [
+            {
+                "key": "background",
+                "value": "#004268"
+            },
+            {
+                "key": "darkFont",
+                "value": "#161b21"
+            },
+            {
+                "key": "lightFont",
+                "value": "#e8f8ff"
+            }
+        ]
+    },
+    {
+        "value": [
+            {
+                "value": "#004268",
+                "key": "heading"
+            },
+            {
+                "value": "#004268",
+                "key": "title"
+            },
+            {
+                "key": "tableOfContentsHeading",
+                "value": "#004268"
+            },
+            {
+                "key": "tableOfContentsBackground",
+                "value": "#ffffff"
+            },
+            {
+                "key": "mobileButtonBackground",
+                "value": "#004268"
+            },
+            {
+                "key": "mobileButtonIcon",
+                "value": "#e8f8ff"
+            },
+            {
+                "key": "body",
+                "value": "#161b21"
+            }
+        ],
+        "key": "termsOfService"
+    },
+    {
+        "value": [
+            {
+                "key": "title",
+                "value": "#004268"
+            },
+            {
+                "key": "submitButtonBackground",
+                "value": "#004268"
+            },
+            {
+                "key": "submitButtonText",
+                "value": "#e8f8ff"
+            },
+            {
+                "key": "submitButtonHover",
+                "value": "#1b4b66"
+            }
+        ],
+        "key": "contact"
+    },
+    {
+        "value": [
+            {
+                "key": "heading",
+                "value": "#004268"
+            },
+            {
+                "key": "title",
+                "value": "#004268"
+            },
+            {
+                "key": "tableOfContentsHeading",
+                "value": "#004268"
+            },
+            {
+                "key": "tableOfContentsBackground",
+                "value": "#ffffff"
+            },
+            {
+                "key": "mobileButtonBackground",
+                "value": "#004268"
+            },
+            {
+                "key": "mobileButtonIcon",
+                "value": "#e8f8ff"
+            }
+        ],
+        "key": "privacyPolicy"
+    },
+    {
+        "key": "navbar",
+        "value": [
+            {
+                "key": "background",
+                "value": "#004268"
+            },
+            {
+                "key": "title",
+                "value": "#e8f8ff"
+            },
+            {
+                "value": "#e8f8ff",
+                "key": "link"
+            },
+            {
+                "key": "linkHovered",
+                "value": "#63bfd8"
+            },
+            {
+                "key": "linkActive",
+                "value": "#63bfd8"
+            },
+            {
+                "value": "#e8f8ff",
+                "key": "authButtonBackground"
+            },
+            {
+                "value": "#004268",
+                "key": "authButtonText"
+            },
+            {
+                "key": "authButtonHover",
+                "value": "#d8d8d8"
+            }
+        ]
+    },
+    {
+        "value": [
+            {
+                "value": "#e8f8ff",
+                "key": "home"
+            },
+            {
+                "key": "page",
+                "value": "#e8f8ff"
+            },
+            {
+                "value": "#e8f8ff",
+                "key": "auth"
+            },
+            {
+                "value": "#e8f8ff",
+                "key": "settings"
+            },
+            {
+                "key": "profile",
+                "value": "#e8f8ff"
+            },
+            {
+                "key": "blog",
+                "value": "#e8f8ff"
+            },
+            {
+                "key": "contact",
+                "value": "#e8f8ff"
+            },
+            {
+                "key": "faq",
+                "value": "#e8f8ff"
+            },
+            {
+                "value": "#e8f8ff",
+                "key": "privacyPolicy"
+            },
+            {
+                "key": "termsOfService",
+                "value": "#e8f8ff"
+            },
+            {
+                "key": "notFoundPage",
+                "value": "#e8f8ff"
+            }
+        ],
+        "key": "pages"
+    },
+    {
+        "key": "faq",
+        "value": [
+            {
+                "key": "heading",
+                "value": "#004268"
+            },
+            {
+                "key": "title",
+                "value": "#004268"
+            },
+            {
+                "value": "#ffffff",
+                "key": "questionBackround"
+            },
+            {
+                "key": "questionHeading",
+                "value": "#004268"
+            }
+        ]
+    },
+    {
+        "key": "footer",
+        "value": [
+            {
+                "value": "#004268",
+                "key": "background"
+            },
+            {
+                "value": "#e8f8ff",
+                "key": "title"
+            },
+            {
+                "key": "link",
+                "value": "#e8f8ff"
+            },
+            {
+                "key": "linkHovered",
+                "value": "#63bfd8"
+            },
+            {
+                "key": "linkActive",
+                "value": "#63bfd8"
+            },
+            ""
+        ]
+    },
+    {
+        "value": [
+            {
+                "key": "backgroundColor",
+                "value": "#e8f8ff"
+            },
+            {
+                "key": "iconColor",
+                "value": "#004268"
+            }
+        ],
+        "key": "socials"
+    },
+    {
+        "value": [
+            {
+                "value": "#004268",
+                "key": "submitButtonBackground"
+            },
+            {
+                "value": "#e8f8ff",
+                "key": "submitButtonText"
+            },
+            {
+                "key": "submitButtonHover",
+                "value": "#1b4b66"
+            },
+            {
+                "value": "#9500ae",
+                "key": "toggleSwitch"
+            }
+        ],
+        "key": "auth"
+    },
+    {
+        "value": [
+            {
+                "key": "title",
+                "value": "#004268"
+            },
+            {
+                "value": "#004268",
+                "key": "activeCategoryChipBackground"
+            },
+            {
+                "value": "#e0e0e0",
+                "key": "nonActiveCategoryChip"
+            },
+            {
+                "key": "blogPostTitle",
+                "value": "#004268"
+            }
+        ],
+        "key": "blog"
+    }
+]
