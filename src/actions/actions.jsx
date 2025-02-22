@@ -50,6 +50,10 @@ export const setAlert = (key, value) => ({
   type: 'SET_ALERT',
   payload: { key, value },
 });
+export const setModal = (key, value) => ({
+  type: 'SET_MODAL',
+  payload: { key, value },
+});
 export const setActiveUser = (state) => ({
   type: 'SET_ACTIVE_USER',
   payload: state,

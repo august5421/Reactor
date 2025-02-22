@@ -35,18 +35,6 @@ function DbSelection({selectedDb, setSelectedDb, handleNext}) {
       hosting: '1GB storage, 10GB download bandwidth',
       analytics: 'Unlimited Firebase Analytics',
       pricing: 'Free with limited read/write operations',
-    },
-    {
-      name: 'MongoDB Atlas',
-      logo: mdbLogo,
-      databaseType: 'NoSQL (MongoDB)',
-      authentication: 'Email/password, OAuth, Social logins',
-      storage: '512MB database storage',
-      functions: '2 million invocations per month',
-      realTime: 'Yes',
-      hosting: 'No',
-      analytics: 'No',
-      pricing: '512MB storage with limited backup and search',
     }
   ];
 

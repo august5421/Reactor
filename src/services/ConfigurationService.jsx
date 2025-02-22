@@ -60,7 +60,6 @@ export const fetchBlogPosts = async () => {
           ...docData,
         });
       });
-      console.log(blogArray)
       return blogArray;
     } catch (error) {
       console.error("Error fetching colors:", error);

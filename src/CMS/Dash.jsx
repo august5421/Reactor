@@ -5,14 +5,15 @@ import HomePage from '../pages/HomePage';
 import AuthPage from '../pages/AuthPage';
 import ProfilePage from '../pages/ProfilePage';
 import Footer from '../components/Footer';
-import { CircularProgress, Collapse, Typography, Snackbar, Alert, AppBar, Toolbar, Fade, Slide, Zoom } from '@mui/material';
+import { CircularProgress, Collapse, Typography, Snackbar, Alert, AppBar, Toolbar, Fade, Slide, Zoom, Modal } from '@mui/material';
 import 'animate.css';
 import { setIsLoad, setAlert, setActiveUser, setAdminUser, setOnDashboard } from '../actions/actions';
 import Cookies from 'js-cookie';
-import { getDocumentById } from '../services/FirestoreService';
+import { getDocumentById } from '../services/DbManipulationService';
 import AlertComponent from '../components/AlertComponent';
 import Navbar from './components/Navbar';
 import TwoPanePage from './pages/TwoPanePage';
+import ModalComponent from '../components/ModalComponent';
 
 function Dash({ routeTo }) {
   const dispatch = useDispatch();
@@ -26,10 +27,6 @@ function Dash({ routeTo }) {
   const siteColors = useSelector((state) => state.siteColors);
   const alert = useSelector((state) => state.alert);
   const containerRef = useRef(null);
-
-  useEffect(() => {
-    console.log(`mobile: ${isMobile} tablet: ${isTablet} large: ${isLarge}`);
-  }, [isMobile, isTablet, isLarge]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -91,6 +88,7 @@ function Dash({ routeTo }) {
         </Box>
       )}
       <AlertComponent />
+      <ModalComponent />
     </>
   );
 }

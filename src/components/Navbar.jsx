@@ -39,8 +39,8 @@ const Navbar = ({ fireRoute }) => {
   };
 
   useEffect(()=>{
-    if (siteConfigurations.site_useRoutes) { 
-        handleNavigation(fireRoute)
+    if (siteConfigurations.site_useRoutes && !onDashboard) { 
+      handleNavigation(fireRoute)
     }
   }, [fireRoute])
 
@@ -54,7 +54,7 @@ const Navbar = ({ fireRoute }) => {
         if (page === 'Home') {
           navigate('/');
         } else {
-          if (page !== 'SingleBlogPage') {
+          if (page !== 'SingleBlogPage' && !onDashboard) {
             navigate('/' + page);
           }
         }
@@ -101,7 +101,7 @@ const Navbar = ({ fireRoute }) => {
         <>
             {siteConfigurations.navbar_linkAnimation === 'fade' && (
             <Fade
-                key={index}
+                key={'fade' + index}
                 in={true}
                 timeout={{ enter: 1000, exit: 500 }}
                 style={{ transitionDelay: `${index * 100}ms` }}
@@ -120,7 +120,7 @@ const Navbar = ({ fireRoute }) => {
 
             {siteConfigurations.navbar_linkAnimation === 'slide' && (
             <Slide
-                key={index}
+                key={'slide' + index}
                 container={containerRef.current}
                 direction={siteConfigurations.navbar_linkAnimationDirection || 'up'}
                 in={true}
@@ -141,7 +141,7 @@ const Navbar = ({ fireRoute }) => {
 
             {siteConfigurations.navbar_linkAnimation === 'zoom' && (
             <Zoom
-                key={index}
+                key={'zoom' + index}
                 in={true}
                 timeout={{ enter: 1000, exit: 500 }}
                 style={{ transitionDelay: `${index * 100}ms` }}

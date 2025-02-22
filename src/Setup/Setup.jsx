@@ -6,6 +6,7 @@ import DbWalkthrough from './pages/DbWalkthrough';
 import FirestoreDbConfiguration from './pages/FirestoreDbConfiguration';  
 import Footer from './components/Footer';
 import AlertComponent from '../components/AlertComponent';
+import SupabaseDbConfiguration from './pages/SupabaseDbConfiguration';
 
 function Setup() {
   const [stage, setStage] = useState(1);  
@@ -37,6 +38,7 @@ function Setup() {
         {stage === 1 && <DbSelection selectedDb={selectedDb} setSelectedDb={setSelectedDb} handleNext={handleNext} />}
         {stage === 2 && <DbWalkthrough selectedDb={selectedDb} setSelectedDb={setSelectedDb} />}
         {stage === 3 && selectedDb === 'Firebase' && <FirestoreDbConfiguration selectedDb={selectedDb} setSelectedDb={setSelectedDb} />}
+        {stage === 3 && selectedDb === 'Supabase' && <SupabaseDbConfiguration selectedDb={selectedDb} setSelectedDb={setSelectedDb} />}
       </Box>
       
       <Footer stage={stage} setStage={setStage} />

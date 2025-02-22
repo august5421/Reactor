@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography, CardContent, CardMedia, Divider, Chip, IconButton, Tooltip } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { getDocumentByField, getDocumentById, updateDocument } from "../services/FirestoreService";
+import { getDocumentByField, getDocumentById, updateDocument } from "../services/DbManipulationService";
 import { setActiveBlogPost, setAlert } from "../actions/actions";
 import { useParams } from "react-router";
 
