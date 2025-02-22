@@ -9,6 +9,7 @@ const initialState = {
   blogPosts: null,
   activeBlogPost: null,
   alert: { message: '', severity: 'info', open: false },
+  modal: { title: '', body: '', open: false },
   activeUser: {},
   adminUser: {},
   activePage: {Name: 'Home', In: true},
@@ -109,6 +110,17 @@ const rootReducer = (state = initialState, action) => {
         };
     };
 
+    case 'SET_MODAL': {
+      const { key, value } = action.payload;
+      return {
+          ...state,
+          modal: {
+              ...state.modal,
+              [key]: value,
+          },
+      };
+    };
+  
     case 'SET_ACTIVE_PAGE': {
         const { key, value } = action.payload;
         return {

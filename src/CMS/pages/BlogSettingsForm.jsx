@@ -1,14 +1,45 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Box, TextField, Typography, MenuItem, Select, FormControl, InputLabel, Collapse, Button } from '@mui/material';
-import { updateSiteColorField, updateSiteConfigurationField } from '../../actions/actions';
+import { setActiveBlogPost, setAlert, setModal, updateSiteColorField, updateSiteConfigurationField } from '../../actions/actions';
 import ColorPickerInput from '../components/ColorPickerInput';
+import { addDocument, deleteDocument, getDocumentById, updateDocument } from '../../services/DbManipulationService';
+import ReactQuill from 'react-quill';
 
 function BlogSettingsForm() {
   const dispatch = useDispatch();
   const siteConfigurations = useSelector(state => state.siteConfigurations);
   const siteColors = useSelector(state => state.siteColors);
   const blogPosts = useSelector((state) => state.blogPosts);
+  const [editedPost, setEditedPost] = useState(null);
+  const [addingPost, setAddingPost] = useState(false);
+
+  const handleSavePost = async () => {
+    if (editedPost) {
+      try {
+        if (addingPost) {
+          await addDocument("Blog", editedPost); 
+        } else {
+          await updateDocument("Blog", editedPost.id, editedPost); 
+        }
+        dispatch(setAlert('open', true));
+        dispatch(setAlert('severity', 'success'));
+        dispatch(setAlert('message', "Post saved successfully."));
+        window.location.reload(); 
+      } catch (error) {
+        dispatch(setAlert('open', true));
+        dispatch(setAlert('severity', 'error'));
+        dispatch(setAlert('message', "We're sorry there was a problem saving your post."));
+      }
+    }
+  };
+
+  const handleEditFieldChange = (fieldName, value) => {
+    setEditedPost((prevPost) => ({
+      ...prevPost,
+      [fieldName]: value,
+    }));
+  };
 
   const handleFieldChange = (fieldName, value) => {
     dispatch(updateSiteConfigurationField(fieldName, value));
@@ -18,12 +49,123 @@ function BlogSettingsForm() {
     dispatch(updateSiteColorField(fieldName, color));
   };
 
-  const handleArrayChange = (arrayName, index, field, value) => {
-    const updatedArray = [...siteConfigurations[arrayName]];
-    updatedArray[index][field] = value;
-    dispatch(updateSiteConfigurationField(arrayName, updatedArray));
-  };
+  useEffect(() => {
+    if (editedPost) {
+      dispatch(setModal('title', `Editing: ${editedPost?.title}`));
+      dispatch(setModal('body', (
+        <Box style={{display: 'flex', flexDirection: 'column'}}>
+          <TextField
+            label="Blog Post Title"
+            sx={{marginTop: '16px'}}
+            variant="outlined"
+            fullWidth
+            size="small"
+            value={editedPost?.title || ''}
+            onChange={(event) => handleEditFieldChange('title', event.target.value)} 
+          />
+          <TextField
+            label="Blog Post Header Image"
+            sx={{marginTop: '16px'}}
+            variant="outlined"
+            fullWidth
+            size="small"
+            value={editedPost?.headerImage || ''}
+            onChange={(event) => handleEditFieldChange('headerImage', event.target.value)} 
+          />
+          <Box style={{display: 'flex', flexDirection: 'row', margin: '16px 0px'}}>
+            <FormControl fullWidth size="small">
+              <InputLabel>Post Author</InputLabel>
+              <Select
+                value={editedPost?.author}
+                label="Post Author"
+                onChange={(event) => handleEditFieldChange('author', event.target.value)} 
+              >
+                {siteConfigurations?.blog_authors?.map((author) => (
+                  <MenuItem key={author} value={author}>
+                    {author}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl fullWidth size="small">
+              <InputLabel>Post Category</InputLabel>
+              <Select
+                value={editedPost?.category}
+                label="Post Category"
+                onChange={(event) => handleEditFieldChange('category', event.target.value)}
+              >
+                {siteConfigurations?.blog_categories?.map((category) => (
+                  <MenuItem key={category} value={category}>
+                    {category}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Box>
+          <ReactQuill
+            value={editedPost?.body || ''} 
+            onChange={(content) => handleEditFieldChange('body', content)}
+            modules={{
+              toolbar: [
+                [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                ['bold', 'italic', 'underline'],
+                ['link'],
+                [{ 'align': [] }],
+                ['image']
+              ],
+            }}
+            formats={['header', 'font', 'list', 'bold', 'italic', 'underline', 'link', 'align', 'image']}
+          />
+          <Button 
+            sx={{
+              color: siteColors.auth_submitButtonText,
+              backgroundColor: siteColors.auth_submitButtonBackground,
+              marginTop: 2,
+              '&:hover': {
+                backgroundColor: siteColors.auth_submitButtonHover,
+              },
+            }}
+            variant="contained" 
+            color="primary" 
+            onClick={handleSavePost}
+          >
+            Save Post
+          </Button>
+        </Box>
+      )));
+      dispatch(setModal('open', true));
+    }
+  }, [editedPost]);  
 
+  const handleEditPost = (post) => {
+      setEditedPost(post)
+  }
+  
+  const handleAddPost = () => {
+    setAddingPost(true)
+    setEditedPost({
+      title: '',
+      headerImage: '',
+      author: '',
+      category: '',
+      body: '',
+    })
+  }
+
+  const handleDeletePost = async (postId) => {
+    const isConfirmed = window.confirm("Are you sure you want to delete this post?");
+    if (isConfirmed) {
+      try {
+        await deleteDocument('Blog', postId); 
+        window.location.reload(); 
+      } catch (error) {
+        console.error("Error deleting post:", error);
+        alert("Failed to delete the post. Please try again.");
+      }
+    }
+  };
+  
   return (
     <Box style={{ display: 'flex', flexDirection: 'column' }}>
       
@@ -125,7 +267,33 @@ function BlogSettingsForm() {
           onColorChange={(color) => handleColorChange(color, 'blog_blogPostTitle')}
         />
       </Box>
-
+      <Typography variant="h6" style={{ marginTop: '16px', marginBottom: '16px' }}>Blog Posts</Typography>
+      {blogPosts.map((post) => (
+        <Box key={post.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: '10px', padding: '8px' }}>
+          <Typography >
+            {post.title.length > 28 ? post.title.slice(0, -3) + "..." : post.title}
+          </Typography>
+          <Box style={{display: 'flex', flexDirection: 'row'}}>
+            <Button variant="outlined" color="secondary" sx={{marginRight: 2}} onClick={() => handleEditPost(post)}>Edit</Button>
+            <Button variant="outlined" color="error" onClick={() => handleDeletePost(post.id)}>Delete</Button>
+          </Box>
+        </Box>
+      ))}
+      <Button 
+        sx={{
+          color: siteColors.auth_submitButtonText,
+          backgroundColor: siteColors.auth_submitButtonBackground,
+          marginTop: 2,
+          '&:hover': {
+            backgroundColor: siteColors.auth_submitButtonHover,
+          },
+        }}
+        variant="contained" 
+        color="primary" 
+        onClick={() => handleAddPost()}
+      >
+        Add New Post
+      </Button>
     </Box>
   );
 }

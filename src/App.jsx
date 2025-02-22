@@ -10,7 +10,7 @@ import { CircularProgress, Collapse, Fade, Snackbar, Alert } from '@mui/material
 import 'animate.css';
 import { setIsLoad, setAlert, setActiveUser } from './actions/actions';
 import Cookies from 'js-cookie';
-import { getDocumentById } from './services/FirestoreService';
+import { getDocumentById } from './services/DbManipulationService';
 import BlogPage from './pages/BlogPage';
 import ContactPage from './pages/ContactPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
@@ -19,6 +19,7 @@ import FAQPage from './pages/FAQPage';
 import SingleBlogPostPage from './pages/SingleBlogPostPage';
 import AlertComponent from './components/AlertComponent';
 import NotFoundPage from './pages/NotFoundPage';
+import ModalComponent from './components/ModalComponent';
 
 function App({ routeTo }) {
   const dispatch = useDispatch();
@@ -135,6 +136,7 @@ function App({ routeTo }) {
         </Box>
       )}
       <AlertComponent />
+      <ModalComponent />
     </>
   );
 }

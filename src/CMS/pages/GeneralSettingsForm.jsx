@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Box, TextField, Typography, MenuItem, Select, FormControl, InputLabel, Collapse, ListSubheader, FormControlLabel, Switch } from '@mui/material';
 import { updateSiteConfigurationField, updateSiteColorField } from '../../actions/actions';
 import ColorPickerInput from '../components/ColorPickerInput';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 function GeneralSettingsForm({setActiveAlert, activeAlert}) {
   const dispatch = useDispatch();
@@ -51,7 +51,19 @@ function GeneralSettingsForm({setActiveAlert, activeAlert}) {
           onColorChange={(color) => handleColorChange(color, 'site_lightFont')}
         />
       </Box>
-
+      <Box style={{display: 'flex', flexDirection: 'row', marginTop: '16px', justifyContent: 'space-between'}}>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={Boolean(siteConfigurations?.site_useRoutes)} 
+              onChange={(event) => handleFieldChange('site_useRoutes', event.target.checked)}
+              color="primary"
+            />
+          }
+          label="Use Routes"
+        />
+      </Box>
+      <Typography variant='caption'>This setting controls whether the site uses web addresses (URLs) to identify pages. When it's turned on, pages are accessed using clean, readable links like <i>mywebsite.com/about-us</i></Typography>
       <Typography style={{ marginTop: '16px', marginBottom: '16px' }} variant="subtitle1">Page Settings</Typography>
       <FormControl fullWidth size="small">
         <InputLabel id="page-transition">Page Transition</InputLabel>

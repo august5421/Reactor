@@ -6,7 +6,7 @@ import { setActivePage, setIsButtonLoad, setAlert, setActiveUser, setAdminUser }
 import AuthenticationService from '../services/AuthenticationService';
 import { useNavigate } from 'react-router';
 import Cookies from 'js-cookie';
-import { getDocumentById } from '../services/FirestoreService';
+import { getDocumentById } from '../services/DbManipulationService';
 
 function AuthPage({ admin }) {
   const dispatch = useDispatch();

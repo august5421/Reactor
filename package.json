@@ -20,6 +20,7 @@
     "@mui/x-date-pickers": "^7.13.0",
     "@mui/x-date-pickers-pro": "^7.13.0",
     "@reduxjs/toolkit": "^2.2.6",
+    "@supabase/supabase-js": "^2.48.1",
     "animate.css": "^4.1.1",
     "axios": "^1.7.2",
     "concurrently": "^9.1.2",

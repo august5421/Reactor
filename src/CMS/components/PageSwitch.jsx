@@ -5,7 +5,7 @@ import { CircularProgress, Collapse, Fade, Snackbar, Alert } from '@mui/material
 import 'animate.css';
 import { setIsLoad, setAlert, setActiveUser } from '../../actions/actions';
 import Cookies from 'js-cookie';
-import { getDocumentById } from '../../services/FirestoreService';
+import { getDocumentById } from '../../services/DbManipulationService';
 
 function PageSwitch({ routeTo }) {
   const dispatch = useDispatch();

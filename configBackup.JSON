@@ -541,7 +541,7 @@
             },
             {
                 "key": "useRoutes",
-                "value": false
+                "value": true
             }
         ]
     }

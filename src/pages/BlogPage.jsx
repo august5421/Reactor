@@ -63,16 +63,18 @@ function BlogPage() {
   const currentPosts = sortedBlogPosts.slice(startIndex, startIndex + postsPerPage);
 
   const handleCardClick = (x) => {
-    if (siteConfigurations.site_useRoutes) {
-        dispatch(setActiveBlogPost(x))
-        navigate(`/blog/${x.title.toLowerCase().replace(/\s+/g, '-')}`)
-    } else {
-        dispatch(setActiveBlogPost(x))
-        dispatch(setActivePage('In', false));
-        setTimeout(() => {
-            dispatch(setActivePage('Name', "SingleBlogPage"));
-            dispatch(setActivePage('In', true));
-        }, 350);
+    if (!onDashboard) { 
+      if (siteConfigurations.site_useRoutes) {
+          dispatch(setActiveBlogPost(x))
+          navigate(`/blog/${x.title.toLowerCase().replace(/\s+/g, '-')}`)
+      } else {
+          dispatch(setActiveBlogPost(x))
+          dispatch(setActivePage('In', false));
+          setTimeout(() => {
+              dispatch(setActivePage('Name', "SingleBlogPage"));
+              dispatch(setActivePage('In', true));
+          }, 350);
+      }
     }
   }
   return (

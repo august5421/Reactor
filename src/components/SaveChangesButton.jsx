@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updateColorsInFirestore, updateConfigsInFirestore } from "../services/FirestoreService";
+import { updateColorsInFirestore, updateConfigsInFirestore } from "../services/DbManipulationService";
 import { Button, CircularProgress } from "@mui/material";
 import { setAlert, setIsButtonLoad } from "../actions/actions";
 
