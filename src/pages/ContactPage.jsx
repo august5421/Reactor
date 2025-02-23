@@ -48,7 +48,6 @@ function ContactPage() {
 
   const handleSubmit = () => {
     if (validateForm()) {
-      console.log('Form submitted successfully:', formData);
       setFormData({ firstName: '', lastName: '', email: '', message: '' });
       setErrors({});
     } else {

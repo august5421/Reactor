@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { Box, Button } from '@mui/material';
 import Navbar from './components/Navbar';
-import DbSelection from './pages/DbSelection';
 import DbWalkthrough from './pages/DbWalkthrough';  
 import FirestoreDbConfiguration from './pages/FirestoreDbConfiguration';  
 import Footer from './components/Footer';
 import AlertComponent from '../components/AlertComponent';
-import SupabaseDbConfiguration from './pages/SupabaseDbConfiguration';
 
 function Setup() {
   const [stage, setStage] = useState(1);  
@@ -35,10 +33,9 @@ function Setup() {
     >
       <Navbar />
       <Box style={{ padding: '16px', overflow: 'scroll', flexGrow: 1 }}>
-        {stage === 1 && <DbSelection selectedDb={selectedDb} setSelectedDb={setSelectedDb} handleNext={handleNext} />}
-        {stage === 2 && <DbWalkthrough selectedDb={selectedDb} setSelectedDb={setSelectedDb} />}
-        {stage === 3 && selectedDb === 'Firebase' && <FirestoreDbConfiguration selectedDb={selectedDb} setSelectedDb={setSelectedDb} />}
-        {stage === 3 && selectedDb === 'Supabase' && <SupabaseDbConfiguration selectedDb={selectedDb} setSelectedDb={setSelectedDb} />}
+        
+        {stage === 1 && <DbWalkthrough selectedDb={selectedDb} setSelectedDb={setSelectedDb} />}
+        {stage === 2 && <FirestoreDbConfiguration selectedDb={selectedDb} setSelectedDb={setSelectedDb} />}
       </Box>
       
       <Footer stage={stage} setStage={setStage} />

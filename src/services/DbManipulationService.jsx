@@ -1,5 +1,3 @@
-import { auth } from "../config/Firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import { getFirestore, collection, deleteDoc, writeBatch, updateDoc, addDoc, query, where, getDocs, doc, getDoc, onSnapshot } from "firebase/firestore"; 
 import { isEqual } from 'lodash';
 

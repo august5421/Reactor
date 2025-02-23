@@ -89,7 +89,6 @@ function AuthPage({ admin }) {
     dispatch(setIsButtonLoad(true));
     try {
       const user = await AuthenticationService.login(formData);
-      console.log('Logged in successfully:', user);
       if (admin) {
         if (user.role !== 'user') {
           Cookies.set('adminToken', user.id, { expires: 7, secure: true, sameSite: 'Strict' });
@@ -112,7 +111,12 @@ function AuthPage({ admin }) {
     } finally {
       dispatch(setIsButtonLoad(false));
       if (siteConfigurations.site_useRoutes) {
-        navigate('/')  
+        if (onDashboard) {
+          navigate('/Dashboard')  
+        } else {
+          navigate('/')  
+        }
+        
       } else {
           dispatch(setActivePage('In', false));
           setTimeout(() => {
@@ -127,7 +131,6 @@ function AuthPage({ admin }) {
     dispatch(setIsButtonLoad(true));
     try {
       const user = await AuthenticationService.signup(formData);
-      console.log('Signed up successfully:', user);
       Cookies.set('authToken', user.id, { expires: 7, secure: true, sameSite: 'Strict' });  
       dispatch(setActiveUser(user))
     } catch (error) {

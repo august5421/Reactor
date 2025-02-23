@@ -17,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { setActivePage, setActiveUser } from "../actions/actions";
 import { useNavigate } from "react-router";
 import Cookies from 'js-cookie';
+import { Box } from "@mui/system";
 
 const Navbar = ({ fireRoute }) => {
   const dispatch = useDispatch();
@@ -98,7 +99,7 @@ const Navbar = ({ fireRoute }) => {
   const renderNavItems = () =>
     siteConfigurations.pages_pagesAvailable.map((page, index) => (
         page.active && page.inPrimaryNav && (
-        <>
+        <Box key={`nav-${index}-${page}`}>
             {siteConfigurations.navbar_linkAnimation === 'fade' && (
             <Fade
                 key={'fade' + index}
@@ -157,7 +158,7 @@ const Navbar = ({ fireRoute }) => {
                 </Button>
             </Zoom>
             )}
-        </>
+        </Box>
     )
 ));
 

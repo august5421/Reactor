@@ -1,5 +1,5 @@
 import { getDocs, collection } from "firebase/firestore";
-import { db } from "../config/Firebase";
+import { db } from "../config/dbConfig";
 
 export const fetchConfigs = async () => {
   try {

@@ -20,9 +20,9 @@ function DbWalkthrough({ selectedDb }) {
       }}
     >
       <Typography variant="h4" gutterBottom>
-        Walkthrough of {selectedDb} setup
+        Walkthrough of Firebase setup
       </Typography>
-      {selectedDb === 'Firebase' && (
+      
         <Box 
             component="video" 
             src={walkthrough} 
@@ -33,7 +33,6 @@ function DbWalkthrough({ selectedDb }) {
             borderRadius: '10px' 
             }} 
         />
-      )}
       
     </Box>
   );

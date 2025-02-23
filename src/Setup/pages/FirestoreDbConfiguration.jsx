@@ -53,7 +53,7 @@ function FirestoreDbConfiguration({ selectedDb }) {
     formData.append("admins", JSON.stringify(admins));
 
     try {
-      const response = await fetch("http://localhost:5000/api/create-users", {
+      const response = await fetch("http://localhost:5000/api/create-users-fb", {
         method: "POST",
         body: formData,
       });
@@ -81,7 +81,7 @@ function FirestoreDbConfiguration({ selectedDb }) {
 
   const createColorsAndConfigurations = async () => {
     try {
-      const blogResponse = await fetch("http://localhost:5000/api/create-blog-posts", {
+      const blogResponse = await fetch("http://localhost:5000/api/create-blog-posts-fb", {
         method: "POST",
       });
       
@@ -96,7 +96,7 @@ function FirestoreDbConfiguration({ selectedDb }) {
         dispatch(setAlert('message', `Error creating Blog Posts table: ${blogData.message}`));
       }
       
-      const colorsResponse = await fetch("http://localhost:5000/api/create-colors", {
+      const colorsResponse = await fetch("http://localhost:5000/api/create-colors-fb", {
         method: "POST",
       });
 
@@ -111,7 +111,7 @@ function FirestoreDbConfiguration({ selectedDb }) {
         dispatch(setAlert('message', `Error creating Colors table: ${colorsData.message}`));
       }
 
-      const configResponse = await fetch("http://localhost:5000/api/create-configurations", {
+      const configResponse = await fetch("http://localhost:5000/api/create-configurations-fb", {
         method: "POST",
       });
 
@@ -137,7 +137,7 @@ function FirestoreDbConfiguration({ selectedDb }) {
 
   const handleFirebaseConfigSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/update-env", {
+      const response = await fetch("http://localhost:5000/api/update-env-fb", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ function FirestoreDbConfiguration({ selectedDb }) {
         Configure Firebase Database
       </Typography>
 
-      {selectedDb === 'Firebase' && (
+      
         <Box>
           <Typography variant="h6" gutterBottom>
             Admin Accounts
@@ -353,7 +353,6 @@ function FirestoreDbConfiguration({ selectedDb }) {
           </Collapse>
 
         </Box>
-      )}
     </Box>
   );
 }

@@ -36,7 +36,7 @@ function Setup({stage, setStage}) {
         Previous
         </Button>
     )}
-    {stage === 2 && (
+    {stage === 1 && (
         <Button
         variant="contained"
         onClick={handleNext}

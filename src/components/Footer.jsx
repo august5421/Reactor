@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { 
   AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, ListItem, ListItemText, 
   BottomNavigation, BottomNavigationAction, Collapse, 
-  Divider,
   Avatar,
   MenuItem,
   Menu,
@@ -88,7 +87,7 @@ const Footer = () => {
   const renderNavItems = () =>
     siteConfigurations.pages_pagesAvailable.map((page, index) => (
         page.active && page.inPrimaryNav && (
-        <>
+        <Box key={`foot-${index}-${page}`}>
             {siteConfigurations.footer_linkAnimation === 'fade' && (
             <Fade
                 key={index}
@@ -150,7 +149,7 @@ const Footer = () => {
                 </Button>
             </Zoom>
             )}
-        </>
+        </Box>
     )
 ));
 
